@@ -62,25 +62,38 @@ Writing on this:
 
 ---
 
-## AI & LLM infrastructure
+## Virtualization & operating systems
 
-I've been in generative AI since the early days (ComfyUI in its early era), and I now focus on **serving and integrating models on my own hardware**.
+I know QEMU/KVM well, mostly from running a cloud gaming cluster at home, basically a small GeForce Now on a Proxmox cluster. Getting Windows guests to work properly meant going below Proxmox: I recompiled my own edk2 firmware and a custom build of QEMU, spoofed CPUID, SMBIOS and ACPI so software that refuses to run in a VM would work, and set up VFIO GPU passthrough to share GPUs between several guests. Then came the usual tuning for low-latency streaming, like CPU pinning and hugepages.
 
-| Layer | Experience |
-|---|---|
-| Inference serving | vLLM · Aphrodite Engine · GPUStack · Ollama |
-| Image generation | ComfyUI |
-| Frontends / orchestration | Open WebUI · FastAPI backends |
-| Applications | RAG tutor for 400+ students ([Physics I](https://github.com/JoaGamo/REPO)) |
+I started this as a teenager and learned most of what I know about how operating systems work by breaking things there.
 
-<details>
-<summary>Also tried / evaluated</summary>
-
-<!-- Add the long tail here: llama.cpp, etc. Names only. -->
-
-</details>
+I also wrote about a container-based take on the same idea: [Games on Whales](https://gamopc.com.ar/games-on-whales-have-you-ever-wanted-to-host-your-own-cloud-gaming-server/).
 
 ---
+
+## AI & LLM infrastructure
+
+I've been in generative AI since the early days (ComfyUI in its early era), and I now focus on **serving, routing and integrating models on my own hardware**. I've run most of the self-hosted LLM ecosystem, so the table below is grouped by layer.
+
+| Layer | Hands-on experience |
+|---|---|
+| **Inference serving** | vLLM · llama.cpp · SGLang · TensorRT-LLM · Aphrodite Engine · ExLlamaV2/V3 (TabbyAPI) · KoboldCpp · LocalAI · Ollama · LM Studio · text-generation-webui · Lemonade Server · llama-swap |
+| **Multi-GPU & clusters** | Ray · GPUStack · llama.cpp RPC · exo · Petals |
+| **Gateways & routing** | LiteLLM · Bifrost · OpenRouter |
+| **Quantization & fine-tuning** | Unsloth · bitsandbytes · GGUF · GPTQ · AWQ · INT4 |
+| **RAG & search** | LlamaIndex · Qdrant · Chroma · Meilisearch |
+| **Multimodal** | LLaVA · Qwen-VL · Florence-2 |
+| **Image & video generation** | ComfyUI · Automatic1111 · Forge · Fooocus · Stable Diffusion · Flux · Wan · HunyuanVideo · Kohya (LoRA training) |
+| **Speech** | faster-whisper · whisper.cpp · WhisperX · Piper · Coqui/XTTS · Kokoro · Parakeet |
+| **Frontends & orchestration** | Open WebUI · SillyTavern · LibreChat · AnythingLLM · Flowise · Langflow |
+| **Agents & automation** | n8n · Node-RED · Aider · Kilo Code |
+
+**Applications built on top of this:** a RAG-based virtual tutor for 400+ UNS students, [[See here]](https://agente.fisica.uns.edu.ar)
+
+### Observability
+
+Grafana · Prometheus · InfluxDB (v2 and v3) · currently exploring the VictoriaMetrics stack.
 
 ## Languages & backend
 
@@ -99,11 +112,11 @@ PostgreSQL · Redis · FastAPI · Next.js · Astro · Drizzle ORM · Prolog
 
 | Project | What it is | Links |
 |---|---|---|
-| **Physics I AI Agent** | RAG-based virtual tutor for 400+ UNS students. FastAPI, SymPy, Open WebUI, local LLMs. | [Repo](https://github.com/JoaGamo/REPO) |
-| **ESP32 Homelab Telemetry** | Physical disk I/O monitor on an ESP32-C3 with a MAX7219 LED matrix. C (ESP-IDF), SPI. | [Repo](https://github.com/JoaGamo/REPO) |
-| **RunConnect** | Real-time sports tracking platform. PostgreSQL, PostGIS, Drizzle ORM, Next.js. | [Repo](https://github.com/JoaGamo/REPO) |
-| **GamoBots** | Telemetry and audio Discord bots. PostgreSQL, Python, Lavalink. | [Repo](https://github.com/JoaGamo/REPO) |
-| **AeroGestión UNS** | Airline management system (Project Leader, PSS course). | [Repo](https://github.com/JoaGamo/REPO) |
+| **Physics I AI Agent** | RAG-based virtual tutor for 400+ UNS students. FastAPI, SymPy, custom WebUI, local LLMs and local physics calculation. | [Website](https://agente.fisica.uns.edu.ar) |
+| **ESP32 Homelab Telemetry** | Physical disk I/O monitor on an ESP32-C3 with a MAX7219 LED matrix. C (ESP-IDF), SPI. | Private |
+| **RunConnect** | Real-time sports tracking platform. PostgreSQL, PostGIS, Drizzle ORM, Next.js. | [Repo](https://github.com/Sofiacosta2024/RunConnect) |
+| **GamoBots** | Telemetry and audio Discord bots. PostgreSQL, Python, Lavalink. | [GamoStats](https://github.com/JoaGamo/GamoStats) (the rest is private) |
+| **Farmacia UNS** | Pharmacy management system (Project Co-Leader, PSS course). | [Repo](https://github.com/homero-six-seven/farmaciauns) |
 
 ---
 
