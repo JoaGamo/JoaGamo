@@ -78,7 +78,7 @@ I've been in generative AI since the early days (ComfyUI in its early era), and 
 
 | Layer | Hands-on experience |
 |---|---|
-| **Inference serving** | vLLM · llama.cpp · SGLang · TensorRT-LLM · Aphrodite Engine · ExLlamaV2/V3 (TabbyAPI) · KoboldCpp · Ollama · Lemonade Server · llama-swap |
+| **Inference serving** | vLLM · llama.cpp · SGLang · TensorRT-LLM · Aphrodite Engine · ExLlamaV2/V3 (TabbyAPI) · KoboldCpp · Ollama · Lemonade Server · llama-swap · AIHorde |
 | **Multi-GPU & clusters** | Ray · GPUStack · llama.cpp RPC · exo · Petals |
 | **Gateways & routing** | LiteLLM · Bifrost · OpenRouter |
 | **Quantization & fine-tuning** | Unsloth · bitsandbytes · GGUF · GPTQ · AWQ · INT4 |
